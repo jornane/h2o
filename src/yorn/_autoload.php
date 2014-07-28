@@ -7,6 +7,6 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-spl_autoload_extensions('.php');
+spl_autoload_extensions( '.php' );
 spl_autoload_register();
-set_include_path(get_include_path().PATH_SEPARATOR.__DIR__);
+set_include_path( get_include_path().PATH_SEPARATOR.__DIR__ );

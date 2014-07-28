@@ -34,7 +34,7 @@ final class H2O {
 	 * @return H2O Application instance
 	 */
 	public static function getInstance() {
-		if ( is_null(static::$instance) ) {
+		if ( is_null( static::$instance ) ) {
 			new H2O;
 		}
 		return static::$instance;
@@ -44,8 +44,8 @@ final class H2O {
 	 * Read the configuration file and store it in a private variable.
 	 */
 	private function __construct() {
-		if ( isset(static::$instance) ) {
-			throw new RuntimeException('Tried to instantiate H2O application class more than once.');
+		if ( isset( static::$instance ) ) {
+			throw new RuntimeException( 'Tried to instantiate H2O application class more than once.' );
 		}
 		$this->config = require dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'etc' . DIRECTORY_SEPARATOR . 'h2o.conf.php';
 		static::$instance = $this;

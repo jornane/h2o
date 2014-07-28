@@ -62,7 +62,7 @@ abstract class Document {
 	 * @param string $rawContent The new raw content of this document
 	 */
 	public function setRawContent( $rawContent ) {
-		assert('is_string($rawContent)');
+		assert( 'is_string( $rawContent )' );
 		$this->rawContent = $rawContent;
 	}
 
@@ -86,7 +86,7 @@ abstract class Document {
 	 * @param string $preprocessedContent The preprocessed content of this document
 	 */
 	public function setPreprocessedContent( $preprocessedContent ) {
-		assert('is_string($preprocessedContent) || is_null($preprocessedContent)');
+		assert( 'is_string( $preprocessedContent ) || is_null( $preprocessedContent )' );
 		$this->preprocessedContent = $preprocessedContent;
 	}
 
@@ -99,7 +99,7 @@ abstract class Document {
 	 */
 	public function getPreprocessedContent() {
 		if ( is_null( $this->preprocessedContent ) ) {
-			$preprocessor->preprocess($this);
+			$preprocessor->preprocess( $this );
 		}
 		if ( is_null( $this->preprocessedContent ) ) {
 			throw new DomainException( 'Preprocessor did not generate preprocessed content.' );
@@ -123,7 +123,7 @@ abstract class Document {
 	 * @param string $title The raw title
 	 */
 	public function setRawTitle( $title ) {
-		assert('is_string($title)');
+		assert( 'is_string( $title )' );
 		$this->title = $title;
 		$this->preprocessedTitle = null;
 	}
@@ -148,7 +148,7 @@ abstract class Document {
 	 * @param string $preprocessedTitle The preprocessed title of this document
 	 */
 	public function setPreprocessedTitle( $preprocessedTitle ) {
-		assert('is_string($preprocessedTitle) || is_string($preprocessedTitle)');
+		assert( 'is_string( $preprocessedTitle ) || is_string( $preprocessedTitle )' );
 		$this->preprocessedTitle = $preprocessedTitle;
 	}
 
@@ -163,7 +163,7 @@ abstract class Document {
 	 */
 	public function getPreprocessedTitle() {
 		if ( is_null( $this->preprocessedTitle ) ) {
-			$preprocessor->preprocess($this);
+			$preprocessor->preprocess( $this );
 		}
 		if ( is_null( $this->preprocessedTitle ) ) {
 			throw new DomainException( 'Preprocessor did not generate preprocessed content.' );

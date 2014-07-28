@@ -48,6 +48,6 @@ interface Authentication {
 	 *
 	 * @param string $returnUrl URL where user is redirected after being logged out 
 	 */
-	function logout($returnUrl = null);
+	function logout( $returnUrl = null );
 
 }
