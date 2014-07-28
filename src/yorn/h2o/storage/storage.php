@@ -21,8 +21,7 @@ interface Storage {
 	/**
 	 * Retrieve a document.
 	 *
-	 * @param string $shortName Short name of the document, this name will be used in the URL.
-	 * @param Document $document The document to be stored.
+	 * @param string $shortName Short name of the document, this name is used in the URL.
 	 */
 	function get( $shortName );
 
