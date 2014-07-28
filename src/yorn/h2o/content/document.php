@@ -22,6 +22,10 @@ abstract class Document {
 	/**
 	 * @var string
 	 */
+	protected $shortName;
+	/**
+	 * @var string
+	 */
 	protected $title;
 	/**
 	 * @var string 
@@ -50,6 +54,27 @@ abstract class Document {
 		if ( is_null( $this->preprocessor ) ) {
 			$this->preprocessor = H2O::getInstance()->getPreprocessor();
 		}
+	}
+
+	/**
+	 * Set the short name of this document.
+	 * The short name is used in the URL.
+	 *
+	 * @param string $shortName New short name
+	 */
+	public function setShortName( $shortName ) {
+		assert( 'is_string( $shortName )' );
+		$this->shortName = $shortName;
+	}
+
+	/**
+	 * Get the short name of this document.
+	 * The short name is used in the URL.
+	 *
+	 * @return string New short name
+	 */
+	public function getShortName() {
+		return $this->shortName;
 	}
 
 	/**
