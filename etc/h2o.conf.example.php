@@ -11,9 +11,6 @@ return (object)[
 	'preprocessor' => 
 		new ExamplePreprocessor(/* params */),
 
-	'postprocessor' => 
-		new ExamplePostprocessor(/* params */),
-
 	'authenticationConnector' => 
 		new ExampleAuthenticationController(/* params */),
 

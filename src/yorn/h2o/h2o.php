@@ -1,6 +1,5 @@
 <?php namespace yorn\h2o;
 
-use \yorn\h2o\processing\Postprocessor;
 use \yorn\h2o\processing\Preprocessor;
 use \yorn\h2o\security\AuthenticationController;
 use \yorn\h2o\storage\Storage;
@@ -68,15 +67,6 @@ final class H2O {
 	 */
 	public function getPreprocessor() {
 		return $this->config->preprocessor;
-	}
-
-	/**
-	 * Get the configured postprocessor.
-	 *
-	 * @return Postprocessor The configured postprocessor.
-	 */
-	public function getPostprocessors() {
-		return $this->config->postprocessor;
 	}
 
 	/**

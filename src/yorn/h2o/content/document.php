@@ -4,17 +4,13 @@
  * Document (raw and preprocessed), title and modification date.
  * Raw content is content as is input by the webmaster,
  * and preprocessed content is HTML code that can be injected unchanged into a web page.
- * Postprocessors can be used to improve the content for the current request.
  *
  * Preprocessing is done only once per change by the webmaster.
  * The preprocessed content is cached on server and not processed again for each request.
- * Postprocessing happens for every request, and will thus eat in the response time.
- * Postprocessing is therefore best avoided.
  *
  * When server configuration is changed, existing pages will keep using their old preprocessor.
  * This makes transitions easier. For this, the configuration of a preprocessor must be stored with a page,
  * and the preprocessor class must not be removed when it is deprecated, until all pages have transitioned to the new preprocessor.
- * Postprocessors are not kept with the page, and will change for all pages when server configuration changes.
  *
  * @author Jørn Åne <i@jornane.no>
  * @copyright Copyright 2014 Jørn Åne
@@ -33,8 +29,6 @@ abstract class Document {
 	protected $preprocessedContent;
 	/** @var Preprocessor */
 	protected $preprocessor;
-	/** @var Postprocessor[] */
-	protected $postprocessors;
 
 	/**
 	 * Instantiate a document, be it existing or new.
@@ -49,9 +43,6 @@ abstract class Document {
 		}
 		if ( is_null( $this->preprocessor ) ) {
 			$this->preprocessor = H2O::getInstance()->getPreprocessor();
-		}
-		if ( is_null( $this->postprocessors ) ) {
-			$this->postprocessors = H2O::getInstance()->getPostprocessors();
 		}
 	}
 
@@ -117,17 +108,12 @@ abstract class Document {
 	}
 
 	/**
-	 * Get the postprocessed content of this document.
-	 * This content can be shown to the end-user as-is.
+	 * Shorthand for #getPreprocessedContent()
 	 *
-	 * @return string The postprocessed content of this document
+	 * @return string The preprocessed content of this document
 	 */
 	public function getContent() {
-		$result = $this->getPreprocessedContent();
-		foreach( $this->postprocessors as $postprocessor ) {
-			$result = $postprocessor->postprocessContent( $result );
-		}
-		return $result;
+		return $this->getPreprocessedContent();
 	}
 
 	/**
@@ -186,17 +172,12 @@ abstract class Document {
 	}
 
 	/**
-	 * Get the postprocessed content of this document.
-	 * This content can be shown to the end-user as-is.
+	 * Shorthand for #getPreprocessedTitle()
 	 *
-	 * @return string The postprocessed content of this document
+	 * @param string $preprocessedTitle The preprocessed title of this document
 	 */
 	public function getTitle() {
-		$result = $this->getPreprocessedTitle();
-		foreach( $this->postprocessors as $postprocessor ) {
-			$result = $postprocessor->postprocessTitle($result);
-		}
-		return $result;
+		return $this->getPreprocessedTitle();
 	}
 
 }
