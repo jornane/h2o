@@ -139,15 +139,6 @@ abstract class Document {
 	}
 
 	/**
-	 * Shorthand for #getPreprocessedContent()
-	 *
-	 * @return string The preprocessed content of this document
-	 */
-	public function getContent() {
-		return $this->getPreprocessedContent();
-	}
-
-	/**
 	 * Set the title of this document.
 	 *
 	 * @param string $title The title
