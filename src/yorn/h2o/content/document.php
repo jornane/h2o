@@ -19,13 +19,21 @@
 
 abstract class Document {
 
-	/** @var string */
+	/**
+	 * @var string
+	 */
 	protected $title;
-	/** @var string */
+	/**
+	 * @var string 
+	 */
 	protected $rawContent;
-	/** @var string */
+	/**
+	 * @var string 
+	 */
 	protected $preprocessedContent;
-	/** @var Preprocessor */
+	/**
+	 * @var Preprocessor 
+	 */
 	protected $preprocessor;
 
 	/**
