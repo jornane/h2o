@@ -25,4 +25,11 @@ interface Storage {
 	 */
 	function get( $shortName );
 
+	/**
+	 * Remove a document
+	 *
+	 * @param string $shortName Short name of the document, this name is used in the URL.
+	 */
+	function remove( $shortName );
+
 }
