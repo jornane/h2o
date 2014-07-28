@@ -20,9 +20,7 @@
 abstract class Document {
 
 	/** @var string */
-	protected $rawTitle;
-	/** @var string */
-	protected $preprocessedTitle;
+	protected $title;
 	/** @var string */
 	protected $rawContent;
 	/** @var string */
@@ -117,67 +115,22 @@ abstract class Document {
 	}
 
 	/**
-	 * Set the raw title of this document.
-	 * The raw title is the title as entered by the webmaster.
+	 * Set the title of this document.
 	 *
-	 * @param string $title The raw title
+	 * @param string $title The title
 	 */
-	public function setRawTitle( $title ) {
+	public function setTitle( $title ) {
 		assert( 'is_string( $title )' );
 		$this->title = $title;
-		$this->preprocessedTitle = null;
 	}
 
 	/**
-	 * Get the raw title of this document.
-	 * The raw title is the title as entered by the webmaster.
+	 * Get the title of this document.
 	 *
-	 * @return string The raw title
-	 */
-	public function getRawTitle() {
-		return $this->title;
-	}
-
-	/**
-	 * Set the preprocessed title of this document.
-	 * Preprocessed titles are calculated once when the raw title is changed,
-	 * and is cached server-side.
-	 * This function is typically used by a preprocessor after preprocessing,
-	 * or by a storage adapter.
-	 *
-	 * @param string $preprocessedTitle The preprocessed title of this document
-	 */
-	public function setPreprocessedTitle( $preprocessedTitle ) {
-		assert( 'is_string( $preprocessedTitle ) || is_string( $preprocessedTitle )' );
-		$this->preprocessedTitle = $preprocessedTitle;
-	}
-
-	/**
-	 * Get the preprocessed title of this document.
-	 * Preprocessed titles are calculated once when the raw title is changed,
-	 * and is cached server-side.
-	 * This function is typically used by a preprocessor after preprocessing,
-	 * or by a storage adapter.
-	 *
-	 * @param string $preprocessedTitle The preprocessed title of this document
-	 */
-	public function getPreprocessedTitle() {
-		if ( is_null( $this->preprocessedTitle ) ) {
-			$preprocessor->preprocess( $this );
-		}
-		if ( is_null( $this->preprocessedTitle ) ) {
-			throw new DomainException( 'Preprocessor did not generate preprocessed content.' );
-		}
-		return $this->preprocessedTitle;
-	}
-
-	/**
-	 * Shorthand for #getPreprocessedTitle()
-	 *
-	 * @param string $preprocessedTitle The preprocessed title of this document
+	 * @return string The title
 	 */
 	public function getTitle() {
-		return $this->getPreprocessedTitle();
+		return $this->title;
 	}
 
 }

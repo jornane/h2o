@@ -7,6 +7,8 @@ use \yorn\h2o\content\Document;
  * This conversion happens only once when the raw content is changed,
  * and is not repeated for every request.
  *
+ * Typically the preprocessor will set the preprocessed content and 
+ *
  * @author Jørn Åne <i@jornane.no>
  * @copyright Copyright 2014 Jørn Åne
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -18,9 +20,9 @@ interface Preprocessor {
 	 * Preprocess a document.
 	 *
 	 * Typically, this will read the content and title using
-	 * Document#getRawContent() and Document#getRawTitle(),
+	 * Document#getRawContent(),
 	 * do some conversion, and write the results back using
-	 * Document#setPreprocessedContent() and Document#setPreprocessedTitle().
+	 * Document#setPreprocessedContent().
 	 *
 	 * This method does not return anything.
 	 *

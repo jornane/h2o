@@ -14,7 +14,6 @@ class HTMLEscapePreprocessor implements Preprocessor {
 
 	public function preprocess( Document $document ) {
 		$document->setPreprocessedContent( htmlspecialchars( $document->getRawContent() ) );
-		$document->setPreprocessedTitle( htmlspecialchars( $document->getRawTitle() ) );
 	}
 
 }

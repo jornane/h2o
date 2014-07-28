@@ -14,7 +14,6 @@ class VerbatimPreprocessor implements Preprocessor {
 
 	public function preprocess( Document $document ) {
 		$document->setPreprocessedContent( $document->getRawContent() );
-		$document->setPreprocessedTitle( $document->getRawTitle() );
 	}
 
 }
